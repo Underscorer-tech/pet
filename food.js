@@ -45,11 +45,11 @@ class food {
      var  y = 100;
 
      imageMode(CENTER)
-     image(this.image,  720,220, 70,70)
+//     image(this.image,  720,220, 70,70)
 
-    if (this.foodStock != 0) {
+    if (this.foodS!= 0) {
 
-      for (let i = 0; i < foodStock; i++) {
+      for (let i = 0; i < foodS; i++) {
 
         if (i % 10 == 0) {
 

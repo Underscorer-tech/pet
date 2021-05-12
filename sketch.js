@@ -1,5 +1,5 @@
 var dog, dogimg, happyDog, database, foodS, foodStock;
-var lastFed,milkImg,food1,f1,h1;
+var lastFed,milkImg,food1,f1,h1,beach;
 
 
 
@@ -8,16 +8,17 @@ function preload() {
   dogimg = loadImage("images/dogImg.png");
   happyDog = loadImage("images/dogImg1.png")
   milkImg=loadImage("images/Milk.png")
+  beach = loadImage("beach.png")
 
 }
 
 function setup() {
-  createCanvas(500, 500);
+  createCanvas(1000, 500);
   food1 = new food();
   database = firebase.database();
   foodStock = database.ref('food');
   foodStock.on("value", food1.readStock);
-  dog = createSprite(250, 250, 50, 50)
+  dog = createSprite(750, 350, 50, 50)
  dog.addImage(dogimg)
  dog.scale=0.3;
  f1= new form()
@@ -26,7 +27,7 @@ function setup() {
 
 
 function draw() {
-  background(rgb(135,206,235) )
+  background(beach)
 
   drawSprites();
       
@@ -41,22 +42,28 @@ function draw() {
   fill("black")
  if (lastFed>12){
 
-  text("Last Feed : "+ lastFed%12 + "PM",250,25 )
+  text("Last Fed : "+ lastFed%12 + "PM",250,25 )
 }
   else if (lastFed == 0) {
     
-text("Last Feed : 12 AM",350,25);
+text("Last Fed : 12 AM",350,25);
 
  } else{
 
-text("Last Feed : " + lastFed +" AM",350,25)
+text("Last Fed : " + lastFed +" AM",350,25)
 
  }
 
   console.log(foodS)
 }
 
+function readStock(data){
 
+foodS=data.val();
+
+
+
+}
 
 
 
